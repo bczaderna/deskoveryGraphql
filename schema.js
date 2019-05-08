@@ -4,7 +4,7 @@ type Video {
   _id: ID
   name: String!
   imageUrl: String!
-  category: String!
+  path: String!
   description: String!
   instructions: String!
   createdDate: String
@@ -25,6 +25,7 @@ type Next {
   _id: ID
   name: String @unique
   gifs: [String!]
+  video: [Video]
 }
 
 type Quiz {
@@ -58,7 +59,7 @@ type Token {
 }
 
 type Mutation {
-  addVideo(name: String!, imageUrl: String!, description: String!, category: String!, instructions: String!, username: String): Video
+  addVideo(name: String!, imageUrl: String!, description: String!, path: String!, instructions: String!, username: String): Video
 
   deleteUserQuiz(_id: ID!): Quiz
   likeQuiz(_id: ID!, username: String!): Quiz

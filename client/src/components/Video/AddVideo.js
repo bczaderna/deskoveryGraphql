@@ -11,7 +11,7 @@ class AddVideo extends React.Component {
     name: '',
     imageUrl: '',
     instructions: '',
-    category: 'Eagles',
+    path: 'Eagles',
     description: '',
     username: ''
   };
@@ -37,7 +37,7 @@ class AddVideo extends React.Component {
         name: '',
         imageUrl: '',
         instructions: '',
-        category: 'Eagles',
+        path: 'Eagles',
         description: '',
         username: ''
       });
@@ -45,9 +45,9 @@ class AddVideo extends React.Component {
     });
   };
   validateForm = () => {
-    const { name, imageUrl, category, description, instructions } = this.state;
+    const { name, imageUrl, path, description, instructions } = this.state;
     const isInvalid =
-      !name || !imageUrl || !category || !description || !instructions;
+      !name || !imageUrl || !path || !description || !instructions;
     return isInvalid;
   };
 
@@ -66,7 +66,7 @@ class AddVideo extends React.Component {
     const {
       name,
       imageUrl,
-      category,
+      path,
       description,
       instructions,
       username
@@ -77,7 +77,7 @@ class AddVideo extends React.Component {
         variables={{
           name,
           imageUrl,
-          category,
+          path,
           description,
           instructions,
           username
@@ -110,9 +110,9 @@ class AddVideo extends React.Component {
                   value={imageUrl}
                 />
                 <select
-                  name='category'
+                  name='path'
                   onChange={this.handleChange}
-                  value={category}
+                  value={path}
                 >
                   <option value='Eagles'>Eagles</option>
                   <option value='Sea'>Sea</option>

@@ -56,7 +56,7 @@ exports.resolvers = {
       return user;
     },
     // Get Quizzes
-    getAllQuizzes: async (root, args, { Video }) => {
+    getAllQuizzes: async (root, args, { Quiz }) => {
       const allQuizzes = await Quiz.find();
 
       return allQuizzes;
@@ -91,14 +91,14 @@ exports.resolvers = {
   Mutation: {
     addVideo: async (
       root,
-      { name, imageUrl, description, category, instructions, username },
+      { name, imageUrl, description, path, instructions, username },
       { Video }
     ) => {
       const newVideo = await new Video({
         name,
         imageUrl,
         description,
-        category,
+        path,
         instructions,
         username
       }).save();
@@ -156,6 +156,7 @@ exports.resolvers = {
         const newNext = await new Next({
           name,
           gifs
+
         }).save();
         return newNext;
       }
