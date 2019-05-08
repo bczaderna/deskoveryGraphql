@@ -13,8 +13,8 @@ const NextSchema = new Schema({
     required: true
   },
   video: {
-    type: [Schema.Types.ObjectId],
-    ref: 'Video'
+    type: String,
+    // ref: 'Video'
   }
 
 });

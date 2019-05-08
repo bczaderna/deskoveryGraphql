@@ -36,7 +36,7 @@ app.use(async (req, res, next) => {
 // allows to use different variables
 require('dotenv').config({ path: 'variables.env' });
 
-const Video = require('./models/Video');
+// const Video = require('./models/Video');
 const User = require('./models/User');
 const Quiz = require('./models/Quiz');
 const Next = require('./models/Next');
@@ -65,7 +65,7 @@ app.use(
     cors: false,
     schema,
     context: {
-      Video,
+      // Video,
       User,
       Quiz,
       Next,

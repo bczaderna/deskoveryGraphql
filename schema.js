@@ -1,16 +1,22 @@
-exports.typeDefs = `
+// type Video {
+//   _id: ID
+//   name: String!
+//   imageUrl: String!
+//   path: String!
+//   description: String!
+//   instructions: String!
+//   createdDate: String
+//   likes: Int
+//   username: String
+// }
 
-type Video {
-  _id: ID
-  name: String!
-  imageUrl: String!
-  path: String!
-  description: String!
-  instructions: String!
-  createdDate: String
-  likes: Int
-  username: String
-}
+// getAllVideos: [Video]
+  // getVideo(_id: ID): Video
+  // searchVideos(searchTerm: String):[Video]
+  
+  // addVideo(name: String!, imageUrl: String!, description: String!, category: String!, instructions: String!, username: String): Video
+
+exports.typeDefs = `
 
 type User {
   _id: ID
@@ -24,7 +30,7 @@ type User {
 type Next {
   _id: ID
   name: String @unique
-  video: [Video]
+  video: String!
   gifs: [String!]
 }
 
@@ -39,10 +45,9 @@ type Quiz {
 }
 
 
+
 type Query {
-  getAllVideos: [Video]
-  getVideo(_id: ID): Video
-  searchVideos(searchTerm: String):[Video]
+  
 
   getAllQuizzes: [Quiz]
   getQuiz: Quiz
@@ -59,7 +64,7 @@ type Token {
 }
 
 type Mutation {
-  addVideo(name: String!, imageUrl: String!, description: String!, category: String!, instructions: String!, username: String): Video
+  
 
   deleteUserQuiz(_id: ID!): Quiz
   likeQuiz(_id: ID!, username: String!): Quiz

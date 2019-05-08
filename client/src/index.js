@@ -1,48 +1,44 @@
-import React, { Fragment } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Fragment } from "react";
+import ReactDOM from "react-dom";
 import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
-} from 'react-router-dom';
-import './index.css';
-import App from './components/App';
-import Signin from './components/Auth/Signin';
-import Signup from './components/Auth/Signup';
-import withSession from './components/withSession';
-import Navbar from './components/Navbar';
-import Search from './components/Video/Search';
-import AddVideo from './components/Video/AddVideo';
-import Profile from './components/Profile/Profile';
-import VideoPage from './components/Video/VideoPage';
-import QuizPage from './components/Quiz/QuizPage';
-import { Capture } from './components/momentCapture';
-import userHome from './components/user-home';
-import Quiz from './components/Quiz/quizMain';
+  Redirect
+} from "react-router-dom";
+import "./index.css";
+import Signin from "./components/Auth/Signin";
+import Signup from "./components/Auth/Signup";
+import withSession from "./components/withSession";
+import Navbar from "./components/Navbar";
+import Profile from "./components/Profile/Profile";
+import QuizPage from "./components/Quiz/QuizPage";
+import { Capture } from "./components/momentCapture";
+import userHome from "./components/user-home";
+import Quiz from "./components/Quiz/quizMain";
 
 // Importing Apollo
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
 
 const client = new ApolloClient({
   uri: `http://localhost:4444/graphql`,
   fetchOptions: {
-    credentials: 'include',
+    credentials: "include"
   },
   request: operation => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     operation.setContext({
       headers: {
-        authorization: token,
-      },
+        authorization: token
+      }
     });
   },
   onError: ({ networkError }) => {
     if (networkError) {
       console.log(networkError);
     }
-  },
+  }
 });
 
 const Root = ({ refetch, session }) => (
@@ -52,17 +48,11 @@ const Root = ({ refetch, session }) => (
       <Switch>
         <Route exact path="/" component={Quiz} />
         <Route path="/quiz" component={Quiz} />
-        <Route path="/search" component={Search} />
         <Route path="/capture" component={Capture} />
         <Route path="/video" component={userHome} />
-        <Route path="/signin" render={() => <Signin refetch={refetch} />} />
+        <Route path="/signin" component={Signin} />
         <Route path="/signup" render={() => <Signup refetch={refetch} />} />
-        <Route
-          path="/video/add"
-          render={() => <AddVideo session={session} />}
-        />
         <Route path="/quizzes/:_id" component={QuizPage} />
-        <Route path="/videos/:_id" component={VideoPage} />
         <Route path="/profile" render={() => <Profile session={session} />} />
         <Redirect to="/" />
       </Switch>
@@ -76,5 +66,5 @@ ReactDOM.render(
   <ApolloProvider client={client}>
     <RootWithSession />
   </ApolloProvider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

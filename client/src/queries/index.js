@@ -1,48 +1,48 @@
-import { gql } from 'apollo-boost';
+import { gql } from "apollo-boost";
 
 /* Video queries */
-export const GET_ALL_VIDEOS = gql`
-  query {
-    getAllVideos {
-      _id
-      name
-      imageUrl
-      path
-      description
-      instructions
-      createdDate
-      likes
-      username
-    }
-  }
-`;
+// export const GET_ALL_VIDEOS = gql`
+//   query {
+//     getAllVideos {
+//       _id
+//       name
+//       imageUrl
+//       path
+//       description
+//       instructions
+//       createdDate
+//       likes
+//       username
+//     }
+//   }
+// `;
 
-export const GET_VIDEO = gql`
-  query($_id: ID!) {
-    getVideo(_id: $_id) {
-      _id
-      name
-      imageUrl
-      path
-      description
-      instructions
-      createdDate
-      likes
-      username
-    }
-  }
-`;
+// export const GET_VIDEO = gql`
+//   query($_id: ID!) {
+//     getVideo(_id: $_id) {
+//       _id
+//       name
+//       imageUrl
+//       path
+//       description
+//       instructions
+//       createdDate
+//       likes
+//       username
+//     }
+//   }
+// `;
 
-export const SEARCH_VIDEOS = gql`
-  query($searchTerm: String) {
-    searchVideos(searchTerm: $searchTerm) {
-      _id
-      name
-      imageUrl
-      likes
-    }
-  }
-`;
+// export const SEARCH_VIDEOS = gql`
+//   query($searchTerm: String) {
+//     searchVideos(searchTerm: $searchTerm) {
+//       _id
+//       name
+//       imageUrl
+//       likes
+//     }
+//   }
+// `;
 
 /* Quiz queries */
 export const GET_ALL_QUIZZES = gql`
@@ -86,34 +86,34 @@ export const SEARCH_QUIZZES = gql`
 
 /* Video Mutations */
 
-export const ADD_VIDEO = gql`
-  mutation(
-    $name: String!
-    $imageUrl: String!
-    $description: String!
-    $path: String!
-    $instructions: String!
-    $username: String
-  ) {
-    addVideo(
-      name: $name
-      imageUrl: $imageUrl
-      description: $description
-      path: $path
-      instructions: $instructions
-      username: $username
-    ) {
-      _id
-      name
-      path
-      description
-      instructions
-      createdDate
-      likes
-      username
-    }
-  }
-`;
+// export const ADD_VIDEO = gql`
+//   mutation(
+//     $name: String!
+//     $imageUrl: String!
+//     $description: String!
+//     $path: String!
+//     $instructions: String!
+//     $username: String
+//   ) {
+//     addVideo(
+//       name: $name
+//       imageUrl: $imageUrl
+//       description: $description
+//       path: $path
+//       instructions: $instructions
+//       username: $username
+//     ) {
+//       _id
+//       name
+//       path
+//       description
+//       instructions
+//       createdDate
+//       likes
+//       username
+//     }
+//   }
+// `;
 
 export const LIKE_QUIZ = gql`
   mutation($_id: ID!, $username: String!) {
@@ -151,7 +151,6 @@ export const ADD_QUIZ = gql`
       gifs
       username
       likes
-
     }
   }
 `;
@@ -166,6 +165,7 @@ export const GET_CURRENT_USER = gql`
       favorites {
         _id
         name
+        video
       }
     }
   }

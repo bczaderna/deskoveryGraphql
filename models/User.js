@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
 const UserSchema = new Schema({
   username: {
@@ -24,12 +24,12 @@ const UserSchema = new Schema({
   },
   favorites: {
     type: [Schema.Types.ObjectId],
-    ref: 'Quiz'
+    ref: "Next"
   }
 });
 
-UserSchema.pre('save', function(next) {
-  if (!this.isModified('password')) {
+UserSchema.pre("save", function(next) {
+  if (!this.isModified("password")) {
     return next();
   }
   bcrypt.genSalt(10, (err, salt) => {
@@ -44,4 +44,4 @@ UserSchema.pre('save', function(next) {
   });
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model("User", UserSchema);

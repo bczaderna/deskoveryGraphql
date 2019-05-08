@@ -28,9 +28,6 @@ const NavbarAuth = ({ session }) => (
         <NavLink to='/capture'>Capture</NavLink>
       </li>
       <li>
-        <NavLink to='/video/add'>Add Video</NavLink>
-      </li>
-      <li>
         <NavLink to='/profile'>Profile</NavLink>
       </li>
       <Signout />

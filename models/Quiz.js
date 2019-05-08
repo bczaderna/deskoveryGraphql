@@ -18,10 +18,6 @@ const QuizSchema = new Schema({
   },
   username: {
     type: String
-  },
-  likes: {
-    type: Number,
-    default: 0
   }
 });
 
