@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import { connect } from 'react-redux';
-import YouTubePlayer from 'react-player/lib/players/YouTube';
-import { Capture } from './momentCapture';
-import axios from 'axios';
+import YouTubePlayer from "react-player/lib/players/YouTube";
+import { Capture } from "./momentCapture";
+import axios from "axios";
+import { Mutation } from "react-apollo";
 // import {captureVideoFrame} from '../utils/capture'
 
 /**
@@ -19,26 +20,29 @@ class UserHome extends Component {
       videoSrc: null,
       loading: false,
       takeoff: true,
-      welcome: true,
+      welcome: true
     };
     this.onCapture = this.onCapture.bind(this);
   }
 
   videoSrc = null;
   // {videoSrc: this.state.videoSrc});
+
   async onCapture() {
     this.setState({ loading: true });
-    const { data } = await axios.post('/api/videos', {
-      videoSrc: this.props.location.state.video,
+    const { data } = await axios.post("/api/videos", {
+      videoSrc: this.props.location.state.video
     });
-    const path = data.path.replace('./api/public', '');
+    const path = data.path.replace("./api/public", "");
     this.setState({ videoSrc: `api${path}`, loading: false });
-    console.log('SET STATE:', this.state);
+    console.log("SET STATE:", this.state);
   }
   // const {email} = props
   ref = youtube => {
     this.player = youtube;
   };
+
+  // onClick() {}
 
   render() {
     setTimeout(() => {
@@ -75,8 +79,12 @@ class UserHome extends Component {
               controls
             />
             <button type="button" onClick={this.onCapture}>
-              {' '}
-              Capture Moment{' '}
+              {" "}
+              Capture Moment{" "}
+            </button>
+            <button type="button" onClick={this.onClick}>
+              {" "}
+              Add to Favorites{" "}
             </button>
             {this.state.loading ? (
               <img
@@ -88,7 +96,7 @@ class UserHome extends Component {
             {this.state.videoSrc ? (
               <Capture videoSrc={this.state.videoSrc} />
             ) : (
-              'No capture'
+              "No capture"
             )}
           </div>
         );
