@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Popup from 'reactjs-popup';
 import { Capture } from './momentCapture.js';
 import axios from 'axios';
+import { Chat } from 'react-chat-popup';
+// import {App} from '../components/Chat'
+
 
 class ControlledPopup extends React.Component {
   constructor(props) {
@@ -58,6 +61,10 @@ class ControlledPopup extends React.Component {
             )}
           </div>
         </Popup>
+        <div className="App">
+        <Chat />
+        </div>
+
       </div>
     );
   }
