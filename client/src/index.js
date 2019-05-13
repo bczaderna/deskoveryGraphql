@@ -15,7 +15,6 @@ import Navbar from './components/Navbar';
 import Search from './components/Video/Search';
 
 import Profile from './components/Profile/Profile';
-import VideoPage from './components/Video/VideoPage';
 import { Capture } from './components/momentCapture';
 import userHome from './components/user-home';
 import Quiz from './components/Quiz/quizMain';
@@ -28,7 +27,7 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
 const client = new ApolloClient({
-  uri: `http://localhost:4444/graphql`,
+  uri: `https://desk0very.herokuapp.com/graphql`,
   fetchOptions: {
     credentials: 'include'
   },
