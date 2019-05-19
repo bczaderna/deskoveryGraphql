@@ -40,6 +40,7 @@ const Video = require('./models/Video');
 const User = require('./models/User');
 const Quiz = require('./models/Quiz');
 const Next = require('./models/Next');
+const Journal = require('./models/Journal');
 
 // GraphQL-Express middleware
 const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
@@ -69,6 +70,7 @@ app.use(
       User,
       Quiz,
       Next,
+      Journal,
       currentUser
     }
   }))
@@ -76,6 +78,7 @@ app.use(
 
 // api routes
 app.use('/api', require('./api/index'));
+app.use('/videos', require('./videos/index'));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // actually connects to the database

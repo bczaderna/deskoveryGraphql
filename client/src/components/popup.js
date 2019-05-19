@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Popup from 'reactjs-popup';
-import { Capture } from './momentCapture.js';
-import axios from 'axios';
+import React, { Component } from "react";
+import Popup from "reactjs-popup";
+import { Capture } from "./momentCapture.js";
+import axios from "axios";
 
 class ControlledPopup extends React.Component {
   constructor(props) {
@@ -12,11 +12,26 @@ class ControlledPopup extends React.Component {
   }
   async componentDidMount() {
     this.setState({ loading: true });
-    const { data } = await axios.post('/api/videos', {
-      videoSrc: this.props.videoSrc,
+    const { data } = await axios.post("/api/videos", {
+      videoSrc: this.props.videoSrc
     });
-    const path = data.path.replace('./api/public', '');
-    this.setState({ videoSrc: `api${path}`, loading: false });
+    console.log(this.state.videoSrc, "video in popup CDM");
+    console.log(data, "PATH IN POPUP");
+    const path = data.path.replace("./videos/public/", "");
+    this.setState({ videoSrc: `${path}`, loading: false });
+  }
+
+  async componentDidUpdate(prevProps) {
+    if (this.props.videoSrc !== prevProps.videoSrc) {
+      this.setState({ loading: true });
+      const { data } = await axios.post("/api/videos", {
+        videoSrc: this.props.videoSrc
+      });
+      console.log(this.state.videoSrc, "video in popup CDM");
+      console.log(data, "PATH IN POPUP");
+      const path = data.path.replace("./videos/public/", "");
+      this.setState({ videoSrc: `${path}`, loading: false });
+    }
   }
 
   openModal() {
@@ -29,31 +44,35 @@ class ControlledPopup extends React.Component {
 
   render() {
     return (
-      <div className="modal">
-        <button className="popupButton" onClick={this.openModal}>
-          Capture moment
-        </button>
-        <Popup
-          open={this.state.open}
-          closeOnDocumentClick
-          onClose={this.closeModal}
-        >
-          <div className="modal">
-            <a className="close" onClick={this.closeModal}>
-              &times;
-            </a>
+      <div>
+        <div>
+          <button className="user-home-buttons" onClick={this.openModal}>
+            Capture moment
+          </button>
+        </div>
+        <div className="modal">
+          <Popup
+            open={this.state.open}
+            closeOnDocumentClick
+            onClose={this.closeModal}
+          >
+            <div className="modal">
+              <a className="close" onClick={this.closeModal}>
+                &times;
+              </a>
 
-            {this.state.loading ? (
-              <img
-                className="loading"
-                src="https://cdn.dribbble.com/users/206755/screenshots/4927172/error_404_animation_800x600.gif"
-                alt="Looking for your moment."
-              />
-            ) : (
-              <Capture videoSrc={this.state.videoSrc} />
-            )}
-          </div>
-        </Popup>
+              {this.state.loading ? (
+                <img
+                  className="loading"
+                  src="https://cdn.dribbble.com/users/206755/screenshots/4927172/error_404_animation_800x600.gif"
+                  alt="Looking for your moment."
+                />
+              ) : (
+                <Capture videoSrc={this.state.videoSrc} />
+              )}
+            </div>
+          </Popup>
+        </div>{" "}
       </div>
     );
   }

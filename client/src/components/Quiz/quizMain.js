@@ -19,12 +19,12 @@ class Quiz extends Component {
             {
               name: 'forest',
               gifs: [
-                'https://cdn.dribbble.com/users/655449/screenshots/2896602/fodadrib.gif',
+                'https://cdn.dribbble.com/users/1062579/screenshots/4792856/foxlac2.gif',
                 'https://cdn.dribbble.com/users/720555/screenshots/3432505/woods_800x600.gif',
                 'https://cdn.dribbble.com/users/2026467/screenshots/5912909/4x3.gif',
                 'https://cdn.dribbble.com/users/1967051/screenshots/5626073/__1612__99.gif',
               ],
-              videoId: 'z5F1a7_dsrs',
+              videoId: ['gvMxUlS2VoU', 'ktPv2E-FmmM', '2mVQ2bWapqo'],
             },
             {
               name: 'mountain',
@@ -34,7 +34,26 @@ class Quiz extends Component {
                 'https://cdn.dribbble.com/users/901963/screenshots/4015420/mountaingif.gif',
                 'https://cdn.dribbble.com/users/404528/screenshots/2036097/04_02_outbx_042515.gif',
               ],
-              videoId: 'deWeERCVc2o',
+              videoId: [
+                'dQQimQsCTgE',
+                'deWeERCVc2o',
+                'b-AAXWdjZv0',
+                'HEQ6blgEZwU',
+              ],
+            },
+            {
+              name: 'grasslands',
+              gifs: [
+                'https://cdn.dribbble.com/users/727440/screenshots/2700907/meadow-doe.gif',
+                'https://cdn.dribbble.com/users/2198140/screenshots/5277197/elephant_dribbble.gif',
+                'https://cdn.dribbble.com/users/1063050/screenshots/3659636/drible2.gif',
+              ],
+              videoId: [
+                'z5F1a7_dsrs',
+                'mhFipoyCQzo',
+                'NVCi9yYwRCY',
+                'TL0weAv8C9s',
+              ],
             },
           ],
         },
@@ -53,15 +72,18 @@ class Quiz extends Component {
                 'https://cdn.dribbble.com/users/59947/screenshots/4516932/astronaut.gif',
                 'https://cdn.dribbble.com/users/1102039/screenshots/4962825/space-1.gif',
               ],
-              videoId: 'uj3FqkflC7g',
+              videoId: ['uj3FqkflC7g']
+
             },
             {
-              name: 'northernLights',
+              name: 'meditation',
               gifs: [
-                'https://cdn.dribbble.com/users/967416/screenshots/3259814/aurora_dribble.gif',
-                'https://cdn.dribbble.com/users/6084/screenshots/2475555/seam.gif',
+                'https://cdn.dribbble.com/users/1154928/screenshots/4003136/secondshot.gif',
+                'https://cdn.dribbble.com/users/85713/screenshots/3775213/herbal_dribble.gif',
+                'https://cdn.dribbble.com/users/1421577/screenshots/4860653/dog-sleeping.gif',
+                'https://cdn.dribbble.com/users/280982/screenshots/3575111/yingif.gif'
               ],
-              videoId: 'CwriDd8STdI',
+              videoId: ['F7wVASdvp8c', 'thHgzWlveqs', 'L2Qln30b2nE'],
             },
           ],
         },
@@ -81,7 +103,7 @@ class Quiz extends Component {
                 'https://cdn.dribbble.com/users/1172684/screenshots/2727143/whale_600x400_lqclemens_wirth.gif',
                 'https://cdn.dribbble.com/users/428251/screenshots/2900364/diver-animation-2.gif',
               ],
-              videoId: 'CEzSXX3tcmU',
+              videoId: ['CEzSXX3tcmU', 'ZIC8QmBKRHc', 'O6Ir_sMsTtc'],
             },
             {
               name: 'shore',
@@ -92,7 +114,12 @@ class Quiz extends Component {
                 'https://cdn.dribbble.com/users/1737376/screenshots/5186212/herbstgifdribb.gif',
                 'https://cdn.dribbble.com/users/205347/screenshots/2291478/untitled-2.gif',
               ],
-              videoId: 'qWlU7hWEl8c',
+              videoId: [
+                'qWlU7hWEl8c',
+                'n6eMRYuo86Y',
+                'fqssZSX1bFo',
+                'O6Ir_sMsTtc',
+              ],
             },
           ],
         },
@@ -113,9 +140,9 @@ class Quiz extends Component {
       this.setState({ selected: targetState, prompt: 'Choose one...' });
     } else {
       return this.props.history.push({
-        pathname: '/video',
+        pathname: `/videos/${this.state.selected[event.target.id].videoId[0]}`,
         state: {
-          video: this.state.selected[event.target.id].videoId,
+          videoList: this.state.selected[event.target.id].videoId,
         },
       });
     }

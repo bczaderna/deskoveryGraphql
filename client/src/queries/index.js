@@ -41,8 +41,8 @@ export const SEARCH_VIDEOS = gql`
 /* Video Mutations */
 
 export const ADD_VIDEO = gql`
-  mutation($name: String!, $gifs: String, $videoId: String) {
-    addVideo(name: $name, gifs: $gifs, videoId: $videoId) {
+  mutation($name: String!, $gifs: String, $videoId: String, $imageUrl: String) {
+    addVideo(name: $name, gifs: $gifs, videoId: $videoId, imageUrl: $imageUrl) {
       _id
       name
       gifs
@@ -52,6 +52,17 @@ export const ADD_VIDEO = gql`
     }
   }
 `;
+
+// export const ADD_JOURNAL = gql`
+//   mutation($title: String, $text: String, $username: String) {
+//     addJournal(title: $title, text: $text, username: $username) {
+//       _id
+//       title
+//       text
+//       username
+//     }
+//   }
+// `;
 
 export const LIKE_VIDEO = gql`
   mutation($_id: ID!, $username: String!) {
@@ -133,6 +144,17 @@ export const GET_USER_VIDEOS = gql`
     }
   }
 `;
+
+export const GET_USER_JOURNAL = gql`
+  query($username: String) {
+    getUserJournal(username: $username) {
+      _id
+      title
+      text
+    }
+  }
+`;
+
 
 /* User Mutations */
 
